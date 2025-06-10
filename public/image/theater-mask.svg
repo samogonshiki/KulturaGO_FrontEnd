@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M90 20C128.66 20 160 51.3401 160 90C160 128.66 128.66 160 90 160C51.3401 160 20 128.66 20 90C20 51.3401 51.3401 20 90 20Z" 
+        stroke="white" 
+        stroke-width="8"/>
+  <path d="M60 70C68.2843 70 75 76.7157 75 85C75 93.2843 68.2843 100 60 100C51.7157 100 45 93.2843 45 85C45 76.7157 51.7157 70 60 70Z" 
+        stroke="white"
+        stroke-width="6"/>
+  <path d="M120 70C128.284 70 135 76.7157 135 85C135 93.2843 128.284 100 120 100C111.716 100 105 93.2843 105 85C105 76.7157 111.716 70 120 70Z" 
+        stroke="white"
+        stroke-width="6"/>
+  <path d="M60 120C80 140 100 140 120 120" 
+        stroke="white" 
+        stroke-width="6" 
+        stroke-linecap="round"/>
+</svg> 
