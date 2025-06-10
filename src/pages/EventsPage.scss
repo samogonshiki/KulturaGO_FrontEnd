@@ -1,0 +1,394 @@
+.events-page {
+  padding: 24px;
+  background: #12121F;
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+
+  .events-header {
+    margin-bottom: 32px;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #836FBD 0%, #6B4EFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(131, 111, 189, 0.1);
+      border: 1px solid rgba(131, 111, 189, 0.2);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      max-width: 400px;
+
+      .material-symbols-rounded {
+        color: #836FBD;
+        font-size: 24px;
+      }
+
+      input {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        width: 100%;
+
+        &::placeholder {
+          color: #A9A9B2;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .category-filters {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .category-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        background: rgba(131, 111, 189, 0.1);
+        border: 1px solid rgba(131, 111, 189, 0.2);
+        border-radius: 12px;
+        color: #fff;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+
+        &:hover {
+          background: rgba(131, 111, 189, 0.2);
+          transform: translateY(-2px);
+        }
+
+        &.active {
+          background: #836FBD;
+          border-color: #836FBD;
+        }
+
+        .material-symbols-rounded {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+
+  .events-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 24px;
+
+    .events-calendar {
+      background: rgba(131, 111, 189, 0.1);
+      border: 1px solid rgba(131, 111, 189, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      height: fit-content;
+
+      .calendar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        h2 {
+          font-size: 18px;
+          font-weight: 600;
+          margin: 0;
+        }
+
+        .nav-btn {
+          background: none;
+          border: none;
+          color: #fff;
+          cursor: pointer;
+          padding: 8px;
+          border-radius: 8px;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: rgba(131, 111, 189, 0.2);
+          }
+
+          .material-symbols-rounded {
+            font-size: 24px;
+          }
+        }
+      }
+
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+
+        .calendar-weekday {
+          text-align: center;
+          font-size: 14px;
+          color: #A9A9B2;
+          padding: 8px 0;
+        }
+
+        .calendar-day {
+          aspect-ratio: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          cursor: pointer;
+          border-radius: 8px;
+          position: relative;
+          transition: all 0.2s ease;
+
+          &:not(.has-date) {
+            cursor: default;
+          }
+
+          &.has-events {
+            color: #836FBD;
+            font-weight: 600;
+
+            .event-dot {
+              position: absolute;
+              bottom: 4px;
+              width: 4px;
+              height: 4px;
+              background: #836FBD;
+              border-radius: 50%;
+            }
+          }
+
+          &.selected {
+            background: #836FBD;
+            color: #fff;
+
+            .event-dot {
+              background: #fff;
+            }
+          }
+
+          &:hover:not(.has-date) {
+            background: none;
+          }
+
+          &:hover.has-date {
+            background: rgba(131, 111, 189, 0.2);
+          }
+        }
+      }
+    }
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .loading, .error, .no-events {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 48px;
+        background: rgba(131, 111, 189, 0.1);
+        border: 1px solid rgba(131, 111, 189, 0.2);
+        border-radius: 16px;
+        color: #A9A9B2;
+
+        .material-symbols-rounded {
+          font-size: 48px;
+          margin-bottom: 16px;
+        }
+
+        p {
+          font-size: 18px;
+          margin: 0;
+        }
+      }
+
+      .loading {
+        .loading-icon {
+          animation: spin 1s linear infinite;
+        }
+      }
+
+      .error {
+        color: #FF6B6B;
+
+        .material-symbols-rounded {
+          color: #FF6B6B;
+        }
+      }
+
+      .event-card {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 24px;
+        background: rgba(131, 111, 189, 0.1);
+        border: 1px solid rgba(131, 111, 189, 0.2);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 32px rgba(131, 111, 189, 0.2);
+        }
+
+        .event-image {
+          position: relative;
+          height: 100%;
+          min-height: 200px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .event-category {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(131, 111, 189, 0.9);
+            padding: 8px;
+            border-radius: 8px;
+            color: #fff;
+
+            .material-symbols-rounded {
+              font-size: 24px;
+            }
+          }
+        }
+
+        .event-info {
+          padding: 24px;
+
+          .event-date, .event-time, .event-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #A9A9B2;
+            font-size: 14px;
+            margin-bottom: 8px;
+
+            .material-symbols-rounded {
+              font-size: 18px;
+            }
+          }
+
+          h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 16px 0;
+            color: #fff;
+          }
+
+          p {
+            color: #A9A9B2;
+            line-height: 1.6;
+            margin-bottom: 24px;
+          }
+
+          .event-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .event-price {
+              font-size: 18px;
+              font-weight: 600;
+              color: #836FBD;
+            }
+
+            .buy-ticket-btn {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              padding: 12px 24px;
+              background: #836FBD;
+              border: none;
+              border-radius: 12px;
+              color: #fff;
+              font-weight: 500;
+              cursor: pointer;
+              transition: all 0.3s ease;
+
+              &:hover {
+                background: #6B4EFF;
+                transform: translateX(4px);
+              }
+
+              .material-symbols-rounded {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .events-page {
+    .events-content {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .events-page {
+    padding: 16px;
+
+    .events-header {
+      h1 {
+        font-size: 24px;
+      }
+
+      .search-bar {
+        margin-bottom: 16px;
+      }
+    }
+
+    .events-content {
+      .events-list {
+        .event-card {
+          grid-template-columns: 1fr;
+
+          .event-image {
+            height: 200px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} 
