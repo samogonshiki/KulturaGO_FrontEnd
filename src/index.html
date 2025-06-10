@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="minimal-ui">
+  <meta name="viewport" content="width=device-width, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script>
+  $(function() {
+    function orientationChange(e) {
+        $("body").scrollTop(1);
+    }
+    $("body").css({ height: "+=300" }).scrollTop(1);
+    $(window).bind("orientationchange", orientationChange);
+});
+</script>
+</html> 
