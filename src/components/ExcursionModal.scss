@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: -100px;
   background: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
@@ -30,12 +30,13 @@
   background: #1a1a2e;
   border-radius: 16px;
   width: 90%;
+  margin-bottom: 150px;
   max-width: 500px;
   position: relative;
   animation: slideUp 0.2s ease-out;
   max-height: calc(100vh - 40px);
   overflow-y: auto;
-  margin: auto;
+  margin-top:450px;
   transform-origin: center;
 
   &.closing {
@@ -279,7 +280,6 @@
       }
 
       .gallery-section {
-        margin: 20px 0;
         
         h3 {
           font-size: 1.2rem;
