@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProfilePage.scss';
 
+
 interface ProfilePageProps {
   profileImage: string;
   onUpdateImage: (newImage: string) => void;
@@ -38,6 +39,8 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profileImage, onUpdateImage }
     { icon: 'stars', value: '4.8', label: 'Рейтинг' },
     { icon: 'military_tech', value: 'Эксперт', label: 'Статус' }
   ];
+
+  const [birthDate, setBirthDate] = useState<Date | null>(new Date('1990-01-01'));
 
   const tickets: Ticket[] = [
     {
@@ -115,26 +118,26 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profileImage, onUpdateImage }
     }
   ];
 
-  const securitySettings = [
-    {
-      title: 'Двухфакторная аутентификация',
-      description: 'Дополнительный уровень защиты вашего аккаунта',
-      icon: 'security',
-      enabled: true
-    },
-    {
-      title: 'Уведомления о входе',
-      description: 'Получайте уведомления о входе в аккаунт с новых устройств',
-      icon: 'notifications',
-      enabled: true
-    },
-    {
-      title: 'Сессии',
-      description: 'Управление активными сессиями',
-      icon: 'devices',
-      enabled: false
-    }
-  ];
+  const [securitySettingsState, setSecuritySettingsState] = useState([
+  {
+    title: 'Двухфакторная аутентификация',
+    description: 'Дополнительный уровень защиты вашего аккаунта',
+    icon: 'security',
+    enabled: false
+  },
+  {
+    title: 'Уведомления о входе',
+    description: 'Получайте уведомления о входе в аккаунт с новых устройств',
+    icon: 'notifications',
+    enabled: true
+  },
+  {
+    title: 'Сессии',
+    description: 'Управление активными сессиями',
+    icon: 'devices',
+    enabled: false
+  }
+]);
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -177,6 +180,27 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profileImage, onUpdateImage }
   const handlePaymentMethodsClick = () => {
     navigate('/payment-methods');
   };
+
+  const toggleSecuritySetting = (index: number) => {
+    setSecuritySettingsState((prev) => {
+      const updated = [...prev];
+      updated[index] = {
+        ...updated[index],
+        enabled: !updated[index].enabled
+      };
+
+      localStorage.setItem('securitySettings', JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+
+  const handleDownload = (qrCode: string, name: string) => {
+  const link = document.createElement('a');
+  link.href = qrCode;
+  link.download = `${name}.png`;
+  link.click();
+};
 
   const renderPaymentMethods = () => (
     <div className="payment-methods">
@@ -405,7 +429,10 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profileImage, onUpdateImage }
                           alt="QR код билета" 
                           className="ticket-qr"
                         />
-                        <button className="download-btn">
+                        <button 
+                          className="download-btn" 
+                          onClick={() => handleDownload(ticket.qrCode, ticket.eventName)}
+                        >
                           <span className="material-symbols-rounded">download</span>
                           Скачать билет
                         </button>
@@ -425,26 +452,26 @@ const ProfilePage: React.FC<ProfilePageProps> = ({ profileImage, onUpdateImage }
                 <h2>Настройки безопасности</h2>
                 
                 <div className="settings-grid">
-                  {securitySettings.map((setting, index) => (
-                    <div key={index} className="setting-item">
-                      <div className="setting-icon">
-                        <span className="material-symbols-rounded">{setting.icon}</span>
+                  {securitySettingsState.map((setting, index) => (
+                      <div key={index} className="setting-item">
+                        <div className="setting-icon">
+                          <span className="material-symbols-rounded">{setting.icon}</span>
+                        </div>
+                        <div className="setting-content">
+                          <h3>{setting.title}</h3>
+                          <p>{setting.description}</p>
+                        </div>
+                        <div className="setting-action">
+                          <label className="switch">
+                            <input 
+                              type="checkbox" 
+                              checked={setting.enabled} 
+                              onChange={() => toggleSecuritySetting(index)}
+                            />
+                            <span className="slider"></span>
+                          </label>
+                        </div>
                       </div>
-                      <div className="setting-content">
-                        <h3>{setting.title}</h3>
-                        <p>{setting.description}</p>
-                      </div>
-                      <div className="setting-action">
-                        <label className="switch">
-                          <input 
-                            type="checkbox" 
-                            checked={setting.enabled}
-                            onChange={() => {}}
-                          />
-                          <span className="slider" />
-                        </label>
-                      </div>
-                    </div>
                   ))}
                 </div>
 
