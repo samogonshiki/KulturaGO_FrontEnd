@@ -1,11 +1,5 @@
 @import '../styles/App.scss';
 
-.hidden {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
 .excursion-modal-overlay {
   position: fixed;
   top: 0;
@@ -24,6 +18,12 @@
   &.closing {
     animation: fadeOut 0.2s ease-out;
   }
+}
+
+.hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .excursion-modal {
