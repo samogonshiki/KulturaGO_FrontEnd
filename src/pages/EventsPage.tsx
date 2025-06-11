@@ -38,7 +38,7 @@ const mockEvents: Event[] = [
     id: '1',
     title: 'Фестиваль северной культуры',
     date: (() => {
-      const date = new Date('2024-03-24');
+      const date = new Date('2025-06-12');
       date.setHours(0, 0, 0, 0);
       return date;
     })(),
@@ -47,13 +47,13 @@ const mockEvents: Event[] = [
     description: 'Ежегодный фестиваль, посвященный культуре и традициям Севера. В программе: выступления фольклорных коллективов, мастер-классы по традиционным ремеслам, дегустация блюд северной кухни.',
     category: 'festival',
     price: 0,
-    image: '/images/events/festival.jpg'
+    image: '/image/events/4.jpeg'
   },
   {
     id: '2',
     title: 'Выставка северных художников',
     date: (() => {
-      const date = new Date('2024-03-24');
+      const date = new Date('2025-06-12');
       date.setHours(0, 0, 0, 0);
       return date;
     })(),
@@ -62,13 +62,13 @@ const mockEvents: Event[] = [
     description: 'Выставка современных художников Архангельской области. Представлены работы в различных техниках: живопись, графика, скульптура. Тематика работ связана с природой и бытом Русского Севера.',
     category: 'exhibition',
     price: 300,
-    image: '/images/events/exhibition.jpg'
+    image: './image/events/1.jpg'
   },
   {
     id: '3',
     title: 'Концерт северного хора',
     date: (() => {
-      const date = new Date('2024-03-24');
+      const date = new Date('2025-06-12');
       date.setHours(0, 0, 0, 0);
       return date;
     })(),
@@ -77,37 +77,37 @@ const mockEvents: Event[] = [
     description: 'Концерт народного северного хора. В программе: традиционные песни Русского Севера, обработки народных мелодий, современные композиции на основе фольклора.',
     category: 'concert',
     price: 500,
-    image: '/images/events/concert.jpg'
+    image: '/image/events/5.jpeg'
   },
   {
     id: '4',
-    title: 'Спектакль "Морожены песни"',
+    title: 'Иммерсивный спектакль "Поморский ковчег"',
     date: (() => {
-      const date = new Date('2024-03-24');
+      const date = new Date('2025-06-11');
       date.setHours(0, 0, 0, 0);
       return date;
     })(),
     time: '18:00',
-    location: 'Молодежный театр',
-    description: 'Музыкальный спектакль по мотивам северных сказок. История о том, как поморы "морозили" песни на зиму, а весной их "оттаивали".',
+    location: 'Набережная Северной Двины, 1',
+    description: 'Помор-Тур и Архангельский театр драмы им. М.В. Ломоносова представляют: Иммерсивный спектакль',
     category: 'theater',
     price: 800,
-    image: '/images/events/theater.jpg'
+    image: '/image/events/2.jpg'
   },
   {
     id: '5',
-    title: 'Мастер-класс по росписи пряников',
+    title: 'МЕДВЕДЬ',
     date: (() => {
-      const date = new Date('2024-03-24');
+      const date = new Date('2025-06-11');
       date.setHours(0, 0, 0, 0);
       return date;
     })(),
     time: '15:00',
     location: 'Культурный центр "Поморье"',
     description: 'Мастер-класс по росписи архангельских пряников. Участники узнают секреты традиционных узоров и смогут создать свой уникальный пряник.',
-    category: 'other',
+    category: 'theater',
     price: 400,
-    image: '/images/events/workshop.jpg'
+    image: '/image/events/3.jpg'
   }
 ];
 
