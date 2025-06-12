@@ -87,7 +87,7 @@ const HomePage: React.FC<HomePageProps> = ({ profileImage }) => {
       time: '19:00',
       price: '1000 ₽',
       category: 'Театры',
-      image: '/image/events/hamlet.jpg',
+      image: '/image/events/6.jpg',
       description: 'Классическая постановка величайшей трагедии Уильяма Шекспира'
     },
     {
@@ -98,7 +98,7 @@ const HomePage: React.FC<HomePageProps> = ({ profileImage }) => {
       time: '16:30',
       price: '400 ₽',
       category: 'Музеи',
-      image: '/image/events/north-history.jpg',
+      image: '/image/events/7.jpg',
       description: 'Экскурсия по главному историческому музею Архангельска'
     }
   ];
