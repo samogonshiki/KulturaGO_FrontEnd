@@ -1,0 +1,83 @@
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #836FBD #12121F;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 6px;
+  background-color: #12121F;
+}
+
+::-webkit-scrollbar-track {
+  background: #12121F;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #836FBD;
+  border-radius: 3px;
+  border: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #6B4EFF;
+  }
+}
+
+html, body {
+  cursor: none !important;
+  background: #12121F;
+}
+
+.cursor {
+  width: 12px;
+  height: 12px;
+  background: #836FBD;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  will-change: transform;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-follower {
+  width: 24px;
+  height: 24px;
+  background: rgba(131, 111, 189, 0.2);
+  border: 1px solid #836FBD;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease;
+  will-change: transform;
+  transform: translate(-50%, -50%);
+}
+
+a, button, [role="button"], input, textarea, select {
+  cursor: none !important;
+  
+  &:hover ~ .cursor {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: #6B4EFF;
+  }
+  
+  &:hover ~ .cursor-follower {
+    transform: translate(-50%, -50%) scale(1.2);
+    background: rgba(131, 111, 189, 0.3);
+    border-color: #6B4EFF;
+  }
+}
+
+@media (max-width: 768px) {
+  html, body, a, button, [role="button"], input, textarea, select {
+    cursor: auto !important;
+  }
+  
+  .cursor, .cursor-follower {
+    display: none;
+  }
+} 

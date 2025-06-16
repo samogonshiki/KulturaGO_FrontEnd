@@ -1,0 +1,206 @@
+
+$primary-purple: #836FBD;
+$secondary-purple: #9682D1;
+$dark-bg: #12121f;
+$text-light: #ffffff;
+
+.start-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #12121f 0%, #1a1a2e 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  &.fade-out {
+    animation: fadeOut 1s ease-out forwards;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba($secondary-purple, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba($primary-purple, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .background-effects {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+
+    .particle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+      border-radius: 50%;
+      animation: float 20s infinite;
+
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          $size: random(5) + 2px;
+          width: $size;
+          height: $size;
+          left: random(100) * 1%;
+          top: random(100) * 1%;
+          animation-delay: random(5) * -1s;
+          animation-duration: (random(10) + 15) * 1s;
+          opacity: random(60) * 0.01;
+        }
+      }
+    }
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: contentFadeIn 1.2s ease-out 0.3s forwards;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: logoFadeIn 1.8s ease-out 0.5s forwards;
+
+      svg {
+        width: 200px;
+        height: 200px;
+        color: #fff;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .logo-path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: drawPath 2.5s ease-in-out 0.8s forwards;
+      }
+    }
+
+    h1 {
+      font-size: 4rem;
+      color: #fff;
+      margin: 0;
+      background: linear-gradient(135deg, #fff 0%, #a8a8ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: textFadeIn 1s ease-out 2s forwards;
+      width: 100%;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: textFadeIn 1s ease-out 2.3s forwards;
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes contentFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes drawPath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes textFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .logo svg {
+    width: 150px;
+    height: 150px;
+  }
+}

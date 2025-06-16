@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="250" height="200" viewBox="0 0 250 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="25" y="25" width="200" height="150" stroke="white" stroke-width="8"/>
+  <path d="M75 75L175 125M175 75L75 125" 
+        stroke="white" 
+        stroke-width="8" 
+        stroke-linecap="round"/>
+  <path d="M10 10L25 25M240 10L225 25M10 190L25 175M240 190L225 175" 
+        stroke="white" 
+        stroke-width="4" 
+        stroke-linecap="round"/>
+</svg> 

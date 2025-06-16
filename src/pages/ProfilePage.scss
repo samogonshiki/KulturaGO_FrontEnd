@@ -1,0 +1,226 @@
+.profile-page {
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h2 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .profile-section, .payment-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .input-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+        border-color: #836FBD;
+      }
+    }
+  }
+
+  .card-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 450px;
+    height: 280px;
+    margin: 0 auto;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+    &.flipped {
+      .card {
+        transform: rotateY(180deg);
+      }
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      cursor: pointer;
+
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #836FBD 0%, #6B4EFF 100%);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-front {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .card-type {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: #fff;
+          font-size: 1.2rem;
+
+          .material-symbols-rounded {
+            font-size: 2rem;
+          }
+        }
+
+        .card-chip {
+          margin: 1rem 0;
+          .material-symbols-rounded {
+            font-size: 3rem;
+            color: #FFD700;
+          }
+        }
+
+        .card-number {
+          font-size: 1.5rem;
+          color: #fff;
+          letter-spacing: 2px;
+          margin: 1rem 0;
+        }
+
+        .card-info {
+          display: flex;
+          justify-content: space-between;
+          color: #fff;
+          text-align: left;
+
+          .card-holder, .card-expiry {
+            .label {
+              font-size: 0.8rem;
+              opacity: 0.8;
+              margin-bottom: 0.25rem;
+            }
+            .value {
+              font-size: 1rem;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+
+      .card-back {
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: linear-gradient(135deg, #6B4EFF 0%, #836FBD 100%);
+
+        .card-details {
+          .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-align: left;
+
+            span:first-child {
+              color: rgba(255, 255, 255, 0.7);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .edit-form {
+    text-align: left;
+    
+    .input-group {
+      margin-bottom: 1rem;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+
+      button {
+        flex: 1;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+
+        &.save-btn {
+          background: #fff;
+          color: #6B4EFF;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.9);
+          }
+        }
+
+        &.cancel-btn {
+          background: rgba(255, 255, 255, 0.1);
+          color: #fff;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+          }
+        }
+      }
+    }
+  }
+
+  .edit-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    color: #6B4EFF;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .material-symbols-rounded {
+      font-size: 1.2rem;
+    }
+  }
+} 
