@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './WelcomeScreen.scss';
+import './scss/WelcomeScreen.scss';
 
 const Logo: React.FC = () => (
   <svg

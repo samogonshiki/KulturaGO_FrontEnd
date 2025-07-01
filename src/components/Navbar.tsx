@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaHome, FaMap, FaVideo, FaCalendar, FaUser } from 'react-icons/fa';
 import { IconType } from 'react-icons';
-import './Navbar.scss';
+import './scss/Navbar.scss';
 
 const Navbar: React.FC = () => {
   const navigate = useNavigate();

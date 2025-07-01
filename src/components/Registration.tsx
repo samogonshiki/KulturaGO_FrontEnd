@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Registration.scss';
+import './scss/Registration.scss';
 import AuthModal from './AuthModal';
 
 interface Testimonial {
