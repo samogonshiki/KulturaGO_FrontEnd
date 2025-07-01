@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './HomePage.scss';
+import './scss/HomePage.scss';
 import { FaMapMarkerAlt, FaBuilding, FaClock, FaCalendar } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';
 import { IconType } from 'react-icons';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './EventsPage.scss';
+import './scss/EventsPage.scss';
 
 interface Event {
   id: string;

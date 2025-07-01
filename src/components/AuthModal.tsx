@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AuthModal.scss';
+import './scss/AuthModal.scss';
+import { authApi} from '../api/api';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -19,14 +20,25 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
-      console.log('Form submitted:', { email, password, name, confirmPassword });
-      
+      if (isLogin) {
+        await authApi.signin(email, password);
+      } else {
+        await authApi.signup(email, name, password);
+
+        await authApi.signin(email, password);
+      }
+
       onClose();
-      navigate('/welcome'); 
-    } catch (error) {
-      console.error('Authentication error:', error);
+      navigate('/welcome');
+
+    } catch (err: any) {
+      const msg =
+          err.response?.data?.message ||
+          err.response?.data ||
+          'Ошибка авторизации';
+      alert(msg);
     }
   };
 
@@ -127,4 +139,4 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default AuthModal; 
+export default AuthModal;

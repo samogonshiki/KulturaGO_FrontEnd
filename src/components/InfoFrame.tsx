@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import './InfoFrame.scss';
+import './scss/InfoFrame.scss';
 import { Link } from 'react-router-dom';
 
 interface FeatureItem {

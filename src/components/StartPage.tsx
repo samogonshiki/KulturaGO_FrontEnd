@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./StartPage.scss";
+import "./scss/StartPage.scss";
 
 const Logo: React.FC = () => (
   <svg

@@ -3,7 +3,7 @@ import L from 'leaflet';
 import 'leaflet-routing-machine';
 import type { Map, Layer, Marker, LatLngExpression, LatLng, Control } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import './Map3D.scss';
+import './scss/Map3D.scss';
 
 interface Attraction {
   id: number;
@@ -640,7 +640,7 @@ const Map3D: React.FC<Props> = ({ apiKey }) => {
       });
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '© OpenStreetMap contributors, © CARTO'
+        attribution: ''
       }).addTo(map);
 
       (map as any).addControl(
