@@ -1,5 +1,5 @@
 import React from 'react';
-import './InDevelopmentPage.scss';
+import './scss/InDevelopmentPage.scss';
 
 const InDevelopmentPage: React.FC = () => {
   return (

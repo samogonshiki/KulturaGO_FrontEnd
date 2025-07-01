@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ProfilePage.scss';
+import './scss/ProfilePage.scss';
 
 interface CardDetails {
   number: string;
