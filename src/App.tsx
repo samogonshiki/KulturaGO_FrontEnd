@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import StartPage from "./components/StartPage";
+import StartPage from "./pages/StartPage";
 import InfoFrame from "./components/InfoFrame";
 import RegistrationPage from "./components/Registration";
 import WelcomeScreen from "./components/WelcomeScreen";
-import HomePage from "./components/HomePage";
-import ProfilePage from "./components/ProfilePage";
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
 import MapPage from "./pages/MapPage";
 import EventsPage from './pages/EventsPage';
 import InDevelopmentPage from './pages/InDevelopmentPage';
-import PaymentMethods from './components/PaymentMethods';
+import PaymentMethods, {PaymentMethod} from './components/PaymentMethods';
 import Navbar from "./components/Navbar";
 import "./styles/App.scss";
+import { ToastContainer } from 'react-toastify';
+
+const initialMethods: PaymentMethod[] = [
+  { id: '1', type: 'sbp',  bank: 'Яндекс',            icon: 'yandex' },
+  { id: '2', type: 'sbp',  bank: 'Т-Банк',            icon: 'tinkoff' },
+  { id: '3', type: 'card', bank: 'MIR', icon: 'mir', number: '5319', isMain: true },
+  { id: '4', type: 'pay',  bank: 'Карта Пэй',         icon: 'pay' },
+];
 
 const pageVariants = {
   initial: {
@@ -81,7 +89,15 @@ const AppContent = () => {
               <Route path="/map" element={<MapPage />} />
               <Route path="/events" element={<EventsPage />} />
               <Route path="/online" element={<InDevelopmentPage />} />
-              <Route path="/payment-methods" element={<PaymentMethods />} />
+              <Route
+                  path="/payment-methods"
+                  element={
+                    <PaymentMethods
+                        initial={initialMethods}
+                        onChange={(list) => console.log('methods changed →', list)}
+                    />
+                  }
+              />
               <Route 
                 path="/profile" 
                 element={
@@ -104,6 +120,7 @@ const App = () => {
   return (
     <Router>
       <AppContent />
+      <ToastContainer position="bottom-right" />
     </Router>
   );
 };
