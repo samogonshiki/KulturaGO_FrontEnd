@@ -1,9 +1,8 @@
-// src/components/HomePage.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../components/scss/HomePage.scss';
 import { FaMapMarkerAlt, FaBuilding, FaClock, FaCalendar } from 'react-icons/fa';
-import { FiSearch, FiCamera } from 'react-icons/fi';
+import { FiSearch } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import ExcursionModal from '../components/modal/ExcursionModal';
 
@@ -36,7 +35,7 @@ interface RecommendationItem {
   gallery?: string[];
 }
 
-const DEFAULT_AVATAR = '/avatars/def.png';
+const DEFAULT_AVATAR = './avatars/def.png';
 
 const HomePage: React.FC<HomePageProps> = ({ profileImage }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -51,33 +50,12 @@ const HomePage: React.FC<HomePageProps> = ({ profileImage }) => {
     setIsLoaded(true);
   }, []);
 
-  // Переход в профиль
   const goToProfile = () => {
     setIsLeaving(true);
     setTimeout(() => {
       navigate('/profile');
     }, 300);
   };
-
-  // Открыть диалог выбора файла
-  const pickAvatar = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    fileInputRef.current?.click();
-  };
-
-  // Обработчик загрузки нового аватара
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const dataUrl = reader.result as string;
-      localStorage.setItem('profileImage', dataUrl);
-      window.location.reload();
-    };
-    reader.readAsDataURL(file);
-  };
-
   const categories = [
     'Все',
     'Музеи',
