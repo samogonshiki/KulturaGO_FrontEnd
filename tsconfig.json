@@ -22,5 +22,12 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "baseUrl": ".",
+  "paths": {
+    "@/*": ["src/*"]
+  },
+  "module": "ESNext",
+  "moduleResolution": "Node",
+  "types": ["vite/client", "node"]
 }
