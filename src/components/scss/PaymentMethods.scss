@@ -1,149 +1,100 @@
-.payment-methods {
-  color: #fff;
+.payment-method {
+  padding: 16px;
+  margin: 0 -8px;
+}
 
-  &__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px;
-    border-bottom: 1px solid rgba(108, 93, 211, 0.1);
+.payment-methods__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: -8px 0 12px 0px;
+}
 
-    h1 {
-      font-size: 20px;
-      font-weight: 500;
-      margin: 0;
-    }
+.payment-method-item {
+  flex: 1 1 calc(50% - 16px);
+  margin: 8px;
+}
 
-    .back-button {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border-radius: 50%;
-      transition: all 0.2s ease;
+.pay-h2 {
+  margin: -24px 0px 24px 15px;
+}
 
-      &:hover {
-        color: #6C5DD3;
-      }
-    }
+.profile-content {
+  padding-bottom: 0;
+}
 
-    .edit-button {
-      color: #6C5DD3;
-      font-size: 14px;
-      cursor: pointer;
-      padding: 8px;
-    }
-  }
+.payment-method-item {
+  background: #262639;
+  border: 1px solid rgba(#fff, .05);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  position: relative;
+  transition: background .2s;
 
-  &__list {
-    padding: 16px;
-  }
-
-  .payment-method-item {
-    display: flex;
-    align-items: center;
-    padding: 16px;
-    margin-bottom: 12px;
-    border-radius: 12px;
+  &.add-new {
     cursor: pointer;
-    transition: all 0.2s ease;
-    background: rgba(108, 93, 211, 0.1);
+    justify-content: center;
+    background: transparent;
+    border: 2px dashed #5B4CB8;
+    color: #5B4CB8;
+    .payment-icon.add {
+      background: transparent;
+      span { font-size: 24px; }
+    }
+    &:hover { background: rgba(#5B4CB8,.08); }
+  }
+}
+
+.payment-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  border-radius: 10px;
+  display:flex; align-items:center; justify-content:center;
+  &.yandex { background:#ff5d37; }
+  &.mir    { background:#2f7d3d; }
+  &.pay    { background:#4f4ed1; }
+  span { color:#fff; font-size:26px; }
+}
+
+.payment-info {
+  flex:1; margin-left: 16px;
+  .payment-label { font-size: 11px; text-transform: uppercase; opacity:.65; }
+  .payment-name  { font-size: 16px; }
+}
+
+.main-badge {
+  position:absolute; right:64px; top:10px;
+  background:#5B4CB8; padding:2px 8px;
+  font-size:11px; border-radius:6px; opacity:.9;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+
+  .pay-btn{
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #404057;
+    color: #fff;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
 
     &:hover {
-      background: rgba(108, 93, 211, 0.2);
-    }
-
-    .payment-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 16px;
-
-      &.yandex {
-        background: #FC3F1D;
-      }
-
-      &.tinkoff {
-        background: #FFDD2D;
-        .material-symbols-rounded {
-          color: #000;
-        }
-      }
-
-      &.mir {
-        background: #0F754E;
-      }
-
-      &.mastercard {
-        background: #EB001B;
-      }
-
-      &.pay {
-        background: #000;
-      }
-
-      &.add {
-        background: rgba(108, 93, 211, 0.1);
-        color: #6C5DD3;
-      }
-
-      .material-symbols-rounded {
-        font-size: 24px;
-        color: #fff;
-      }
-    }
-
-    .payment-info {
-      flex: 1;
-
-      .payment-label {
-        font-size: 13px;
-        color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 4px;
-      }
-
-      .payment-name {
-        font-size: 16px;
-        font-weight: 400;
-        color: #fff;
-      }
-    }
-
-    .main-badge {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.6);
-      background: rgba(108, 93, 211, 0.1);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-
-    &.add-new {
-      background: transparent;
-      border: 1px dashed rgba(108, 93, 211, 0.3);
-
-      &:hover {
-        border-color: #6C5DD3;
-        background: rgba(108, 93, 211, 0.03);
-      }
-
-      .payment-name {
-        color: #6C5DD3;
-        font-weight: 500;
-      }
-
-      .payment-icon {
-        background: rgba(108, 93, 211, 0.1);
-        
-        .material-symbols-rounded {
-          color: #6C5DD3;
-        }
-      }
+      background: #5B4CB8;
+      transform: scale(1.1);
     }
   }
-} 
+}
+
+.payment-method-item .actions button[title="Сделать основной"].active {
+  background: #5B4CB8;
+}
