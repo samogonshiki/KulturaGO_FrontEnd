@@ -303,11 +303,9 @@ $dark-bg: #1a1a2e;
 @keyframes fadeIn {
   from {
     opacity: 0;
-    backdrop-filter: blur(0);
   }
   to {
     opacity: 1;
-    backdrop-filter: blur(10px);
   }
 }
 
@@ -378,6 +376,65 @@ $dark-bg: #1a1a2e;
   50% {
     transform: scale(1.05);
     filter: drop-shadow(0 0 30px rgba(255,255,255,0.3));
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-10%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scrollFeed {
+  0% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(calc(-50% - 12px));
+  }
+  55% {
+    transform: translateY(calc(-50% - 12px));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.testimonials-track {
+  animation: scrollFeed 40s linear infinite;
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
+  }
+  50% {
+    transform: scale(1.07);
+    filter: drop-shadow(0 0 30px rgba(255,255,255,0.3));
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.15);
   }
 }
 

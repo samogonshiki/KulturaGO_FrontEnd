@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './scss/AuthModal.scss';
-import { authApi} from '../api/api';
+import '../scss/AuthModal.scss';
+import { authApi} from '../../api/api';
 
 interface AuthModalProps {
   isOpen: boolean;

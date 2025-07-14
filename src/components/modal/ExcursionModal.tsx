@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { FaTimes, FaHeart, FaInfoCircle, FaStar, FaUser, FaMapMarkerAlt, FaVideo } from 'react-icons/fa';
 import { IconType } from 'react-icons';
-import './scss/ExcursionModal.scss';
+import '../scss/ExcursionModal.scss';
 import { useNavigate } from 'react-router-dom';
 
 interface Review {

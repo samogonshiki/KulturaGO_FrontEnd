@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './scss/Registration.scss';
-import AuthModal from './AuthModal';
+import AuthModal from './modal/AuthModal';
 
 interface Testimonial {
   avatar: string;
