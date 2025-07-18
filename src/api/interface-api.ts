@@ -29,5 +29,3 @@ export interface SecurityItem {
     title: string;
     enabled: boolean;
 }
-
-export let isRefreshing = false;
