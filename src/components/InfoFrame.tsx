@@ -331,7 +331,7 @@ const InfoFrame: React.FC = () => {
               </div>
             </div>
             <div className="copyright">
-              © 2024 Travel App. Все права защищены.
+              © 2025 KulturaGo. Все права защищены.
             </div>
           </footer>
         </div>
