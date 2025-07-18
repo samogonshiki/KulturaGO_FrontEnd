@@ -344,7 +344,7 @@
 
   &.closing {
     animation: fadeOut 0.3s ease-out forwards;
-    
+
     .modal-content {
       animation: slideDown 0.3s ease-out forwards;
     }
@@ -1077,7 +1077,7 @@
 
       .payment-icon {
         background: rgba(108, 93, 211, 0.1);
-        
+
         .material-symbols-rounded {
           color: #6C5DD3;
         }
@@ -1638,3 +1638,30 @@
     }
   }
 }
+
+.personal-info .actions .edit-actions .save-btn {
+  width: auto;
+  padding: 12px 24px;
+}
+
+.phone-input-field.read-only {
+  border-bottom-color: transparent;
+  cursor: default;
+
+  &:focus { border-bottom-color: transparent; }
+}
+
+.change-password-btn {
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.change-password-btn .material-symbols-rounded {
+  font-size: 20px;
+  line-height: 1;
+  display: block;
+}
+
