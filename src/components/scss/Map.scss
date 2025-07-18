@@ -126,6 +126,14 @@
   }
 }
 
+.pages-container{
+  margin-bottom: -150px;
+}
+
+.leaflet-routing-container.leaflet-bar.leaflet-routing-container-hide.leaflet-control {
+  display: none !important;
+}
+
 .user-marker {
   width: 24px;
   height: 24px;
