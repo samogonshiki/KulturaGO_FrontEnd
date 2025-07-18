@@ -53,7 +53,7 @@ const mockEvents: Event[] = [
     id: '2',
     title: 'Выставка северных художников',
     date: (() => {
-      const date = new Date('2025-06-12');
+      const date = new Date('2025-07-17');
       date.setHours(0, 0, 0, 0);
       return date;
     })(),
@@ -68,7 +68,7 @@ const mockEvents: Event[] = [
     id: '3',
     title: 'Концерт северного хора',
     date: (() => {
-      const date = new Date('2025-06-12');
+      const date = new Date('2025-07-17');
       date.setHours(0, 0, 0, 0);
       return date;
     })(),
@@ -83,7 +83,7 @@ const mockEvents: Event[] = [
     id: '4',
     title: 'Иммерсивный спектакль "Поморский ковчег"',
     date: (() => {
-      const date = new Date('2025-06-11');
+      const date = new Date('2025-07-18');
       date.setHours(0, 0, 0, 0);
       return date;
     })(),
@@ -98,7 +98,7 @@ const mockEvents: Event[] = [
     id: '5',
     title: 'МЕДВЕДЬ',
     date: (() => {
-      const date = new Date('2025-06-11');
+      const date = new Date('2025-07-17');
       date.setHours(0, 0, 0, 0);
       return date;
     })(),

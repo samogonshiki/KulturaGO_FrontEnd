@@ -35,8 +35,6 @@ interface RecommendationItem {
   gallery?: string[];
 }
 
-const DEFAULT_AVATAR = './avatars/def.png';
-
 const HomePage: React.FC<HomePageProps> = ({ profileImage }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLeaving, setIsLeaving] = useState(false);
@@ -147,7 +145,7 @@ const HomePage: React.FC<HomePageProps> = ({ profileImage }) => {
             <h1>Главная</h1>
             <div className="profile-section">
               <div className="profile-image" onClick={goToProfile}>
-                <img src={profileImage || DEFAULT_AVATAR} alt="Profile" />
+                <img src={profileImage || "/image/profile/default-avatar.jpg"} alt="Profile" />
               </div>
             </div>
           </header>
