@@ -39,7 +39,7 @@ $dark-bg: #1a1a2e;
   &::-webkit-scrollbar-thumb {
     background: rgba($secondary-purple, 0.5);
     border-radius: 4px;
-    
+
     &:hover {
       background: rgba($secondary-purple, 0.7);
     }
@@ -52,7 +52,7 @@ $dark-bg: #1a1a2e;
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
+    background:
       radial-gradient(circle at 20% 20%, rgba($secondary-purple, 0.15) 0%, transparent 50%),
       radial-gradient(circle at 80% 80%, rgba($primary-purple, 0.15) 0%, transparent 50%);
     pointer-events: none;
@@ -79,7 +79,7 @@ $dark-bg: #1a1a2e;
           height: $size;
           left: random(100) * 1%;
           top: random(100) * 1%;
-          animation: 
+          animation:
             snowfall #{random(10) + 5}s linear infinite,
             sway #{random(5) + 3}s ease-in-out infinite alternate;
           animation-delay: #{random(10) * -1}s;
@@ -112,7 +112,7 @@ $dark-bg: #1a1a2e;
 
     .logo-container {
       margin-bottom: 2rem;
-      animation: logoFadeIn 1.8s ease-out 0.5s forwards;
+      animation: logoFadeIn 1.8s ease-out;
       position: relative;
       display: inline-block;
 
@@ -124,8 +124,8 @@ $dark-bg: #1a1a2e;
         width: 200px;
         height: 200px;
         transform: translate(-50%, -50%);
-        background: radial-gradient(circle at center, 
-          rgba($secondary-purple, 0.15) 0%, 
+        background: radial-gradient(circle at center,
+          rgba($secondary-purple, 0.15) 0%,
           rgba($secondary-purple, 0.1) 35%,
           transparent 70%
         );
@@ -173,7 +173,7 @@ $dark-bg: #1a1a2e;
     gap: 16px;
     max-width: 400px;
     margin: 0 auto;
-    animation: slideUp 1s ease-out 0.6s forwards;
+    animation: slideUp 1s ease-out;
 
     .continue-button {
       width: 100%;
@@ -233,7 +233,7 @@ $dark-bg: #1a1a2e;
         background: #000;
         color: #fff;
         box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        
+
         &:hover {
           background: #1a1a1a;
           box-shadow: 0 6px 20px rgba(0,0,0,0.3);
@@ -244,7 +244,7 @@ $dark-bg: #1a1a2e;
         background: #FC3F1D;
         color: #fff;
         box-shadow: 0 4px 15px rgba(252,63,29,0.2);
-        
+
         &:hover {
           background: #fd5335;
           box-shadow: 0 6px 20px rgba(252,63,29,0.3);
@@ -255,7 +255,7 @@ $dark-bg: #1a1a2e;
         background: #0077FF;
         color: #fff;
         box-shadow: 0 4px 15px rgba(0,119,255,0.2);
-        
+
         &:hover {
           background: #1a84ff;
           box-shadow: 0 6px 20px rgba(0,119,255,0.3);
@@ -290,10 +290,10 @@ $dark-bg: #1a1a2e;
     line-height: 1.6;
     letter-spacing: -0.01em;
     margin-top: 2rem;
-    animation: fadeIn 1s ease-out 0.8s forwards;
+    animation: fadeIn 1s ease-out;
     max-width: 400px;
     margin: 2rem auto 0;
-    
+
     &:hover {
       color: rgba(255,255,255,0.8);
     }
@@ -460,7 +460,7 @@ $dark-bg: #1a1a2e;
 
       .logo-container {
         margin-bottom: 2rem;
-        
+
         .logo-image {
           width: 120px;
           height: 120px;
@@ -508,7 +508,7 @@ $dark-bg: #1a1a2e;
     margin: 0 auto;
     padding: 40px 20px;
     overflow: hidden;
-    
+
     &::before {
       content: '';
       position: absolute;
@@ -532,7 +532,7 @@ $dark-bg: #1a1a2e;
       z-index: 3;
       pointer-events: none;
     }
-    
+
     .testimonials-track {
       position: absolute;
       display: flex;
@@ -542,7 +542,7 @@ $dark-bg: #1a1a2e;
       padding: 60px 0;
       animation: scrollFeed 45s linear infinite;
       will-change: transform;
-      
+
       &:hover {
         animation-play-state: paused;
       }
@@ -559,7 +559,7 @@ $dark-bg: #1a1a2e;
       padding: 24px;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       transform-origin: center center;
-      
+
       &::before {
         content: '';
         position: absolute;
@@ -581,7 +581,7 @@ $dark-bg: #1a1a2e;
         mask-composite: exclude;
         transition: all 0.4s ease;
       }
-      
+
       &:hover {
         transform: translateX(10px) scale(1.02);
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25),
@@ -627,7 +627,7 @@ $dark-bg: #1a1a2e;
         display: flex;
         align-items: center;
         margin-bottom: 15px;
-        
+
         .avatar {
           width: 48px;
           height: 48px;
@@ -635,7 +635,7 @@ $dark-bg: #1a1a2e;
           overflow: hidden;
           margin-right: 15px;
           border: 2px solid rgba(255, 255, 255, 0.1);
-          
+
           img {
             width: 100%;
             height: 100%;
@@ -645,7 +645,7 @@ $dark-bg: #1a1a2e;
 
         .user-info {
           flex: 1;
-          
+
           .author {
             font-size: 1em;
             font-weight: 500;
@@ -656,11 +656,11 @@ $dark-bg: #1a1a2e;
           .rating {
             display: flex;
             gap: 4px;
-            
+
             .star-filled {
               color: rgba(255, 215, 0, 0.9);
             }
-            
+
             .star-empty {
               color: rgba(255, 255, 255, 0.2);
             }

@@ -195,4 +195,24 @@
     opacity: 1;
     transform: scale(1);
   }
-} 
+}
+
+.password-rules {
+  list-style: none;
+  margin: 0.5em 0 0;
+  padding: 0;
+  li {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    &.ok { color: #28a745; }
+    &.fail { color: #dc3545; }
+    svg {
+      margin-right: 0.4em;
+    }
+  }
+}
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
