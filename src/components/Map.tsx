@@ -1,71 +1,12 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import L from 'leaflet';
 import 'leaflet-routing-machine';
-import type { Map, Layer, Marker, LatLngExpression, LatLng, Control } from 'leaflet';
+import type { Layer, Marker, LatLngExpression, LatLng, Control } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './scss/Map3D.scss';
+import {Attraction,RouteInfo,Statistic,VisitedPlace,SearchPoint,Event,
+  PopularRoute,MapContextMenuProps} from "./constans"
 
-interface Attraction {
-  id: number;
-  name: string;
-  type: 'museum' | 'monument' | 'park' | 'church';
-  coordinates: [number, number];
-  rating: number;
-  price: string;
-  description: string;
-}
-
-interface RouteInfo {
-  distance: string;
-  time: string;
-  name?: string;
-  instructions: Array<{
-    text: string;
-    distance: string;
-    time: string;
-  }>;
-}
-
-interface Statistic {
-  cities: number;
-  places: number;
-  areaKm: number;
-}
-
-interface VisitedPlace {
-  id: string;
-  name: string;
-  address: string;
-  type: string;
-  icon: string;
-}
-
-interface SearchPoint {
-  address: string;
-  coordinates?: [number, number];
-}
-
-interface Event {
-  id: string;
-  name: string;
-  date: string;
-  location: string;
-  type: string;
-}
-
-interface PopularRoute {
-  id: string;
-  name: string;
-  distance: string;
-  time: string;
-  rating: number;
-}
-
-interface MapContextMenuProps {
-  position: { lat: number; lng: number };
-  onClose: () => void;
-  onSetMarker: (type: 'A' | 'B') => void;
-}
 
 const MapContextMenu: React.FC<MapContextMenuProps> = ({ position, onClose, onSetMarker }) => (
     <div
