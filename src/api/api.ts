@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import {TokensResp,Profile,SecurityItem,PresignResp} from "./interface-api"
 
 const baseURL = (typeof import.meta !== "undefined" && (import.meta as any).env?.VITE_API_URL) ||
     process.env.REACT_APP_API_URL || "http://localhost:8080/api/v1";
@@ -9,7 +10,7 @@ export const API = axios.create({
     headers: { "Content-Type": "application/json" },
 });
 
-let isRefreshing = false;
+export let isRefreshing = false;
 
 API.interceptors.response.use(
     (res) => res,
@@ -27,27 +28,6 @@ API.interceptors.response.use(
         }
     }
 );
-
-export interface TokensResp {
-    access_token:  string;
-    refresh_token: string;
-    expires_in:    number;
-}
-
-export interface Profile {
-    user_id:   number;
-    full_name: string;
-    about:     string;
-    email:     string;
-    avatar:    string;
-    city:      string;
-    phone:     string;
-    birthday:  string;
-
-    two_fa_enabled:    boolean;
-    login_alerts:      boolean;
-    allow_new_devices: boolean;
-}
 
 export const authApi = {
     signup: (email: string, nickname: string, password: string) =>
@@ -68,30 +48,33 @@ export const profileApi = {
         API.put<Profile>("/profile", patch).then((r) => r.data),
 };
 
-export interface PresignResp { put_url: string; public_url: string }
 
 export const avatarApi = {
-    presign: () => API.get<PresignResp>("/avatar/presign").then((r) => r.data),
+    presign(): Promise<PresignResp> {
+        return API.get<PresignResp>('/avatar/presign')
+            .then(r => r.data);
+    },
 
-    async uploadAvatar(file: File) {
+    async uploadAvatar(file: File): Promise<string> {
         const { put_url, public_url } = await this.presign();
-        await fetch(put_url, {
-            method: "PUT",
+
+        const uploadRes = await fetch(put_url, {
+            method: 'PUT',
             body: file,
             headers: {
-                "Content-Type": file.type,
-                "x-amz-acl": "public-read",
+                'Content-Type': file.type,
+                'x-amz-acl': 'public-read',
             },
         });
+        if (!uploadRes.ok) {
+            throw new Error(`S3 upload failed: ${uploadRes.status}`);
+        }
+
+        await profileApi.save({ avatar: public_url });
+
         return public_url;
     },
 };
-
-export interface SecurityItem {
-    key: string;
-    title: string;
-    enabled: boolean;
-}
 
 export const securityApi = {
     list: () =>
