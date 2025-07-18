@@ -42,7 +42,8 @@ const AnimatedPage: React.FC<AnimatedPageProps> = ({ children, pathname }) => {
         background: '#12121F',
         willChange: 'transform, opacity',
         position: 'relative',
-        zIndex: 1
+        zIndex: 1,
+        marginBottom: '-150px'
       }}
     >
       {children}
