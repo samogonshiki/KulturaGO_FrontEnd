@@ -3,6 +3,7 @@ import L from "leaflet";
 import type {FeatureGroup} from "leaflet"
 import "leaflet.markercluster";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+import {attractions} from "./Map-test-events"
 
 
 export interface Coordinates {
@@ -47,71 +48,6 @@ export interface MapContextMenuProps {
     onSetMarker: (type: "A" | "B") => void;
 }
 
-export const attractions: Attraction[] = [
-    {
-        id: 1,
-        name: "Гостиный двор",
-        type: "museum",
-        coordinates: [64.538111, 40.509778],
-        rating: 4.8,
-        price: "Бесплатно",
-        description: "Исторический памятник архитектуры XVIII века, символ Архангельска.",
-    },
-    {
-        id: 2,
-        name: "Северный морской музей",
-        type: "museum",
-        coordinates: [64.533987, 40.516768],
-        rating: 4.6,
-        price: "200₽",
-        description: "Музей истории освоения Арктики и Северного морского пути.",
-    },
-    {
-        id: 3,
-        name: "Петровский парк",
-        type: "park",
-        coordinates: [64.537222, 40.514194],
-        rating: 4.5,
-        price: "Бесплатно",
-        description: "Исторический парк с памятником Петру I и красивой набережной.",
-    },
-    {
-        id: 4,
-        name: "Свято-Троицкий собор",
-        type: "church",
-        coordinates: [64.563969, 40.529866],
-        rating: 4.7,
-        price: "Бесплатно",
-        description: "Главный православный храм Архангельска, памятник архитектуры.",
-    },
-    {
-        id: 5,
-        name: "Драматический театр",
-        type: "monument",
-        coordinates: [64.536369, 40.515223],
-        rating: 4.7,
-        price: "От 500₽",
-        description: "Архангельский театр драмы имени М.В. Ломоносова.",
-    },
-    {
-        id: 6,
-        name: "Музей освоения Арктики",
-        type: "museum",
-        coordinates: [64.533925, 40.522796],
-        rating: 4.5,
-        price: "300₽",
-        description: "Коллекция произведений искусства, посвящённых Арктике.",
-    },
-    {
-        id: 7,
-        name: "Краеведческий музей",
-        type: "museum",
-        coordinates: [64.539115, 40.509573],
-        rating: 4.8,
-        price: "от 150₽",
-        description: "Один из старейших музеев России, расположенный в Гостиных дворах XVII века.",
-    },
-];
 
 
 export const mapRef:            { current: L.Map | null }                 = { current: null };
