@@ -1,25 +1,65 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import L from 'leaflet';
-import 'leaflet-routing-machine';
-import type { Layer, Marker, LatLngExpression, LatLng, Control } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import './scss/Map3D.scss';
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import L, { LatLngExpression } from "leaflet";
+import "leaflet-routing-machine";
+import "leaflet/dist/leaflet.css";
+import "./scss/Map3D.scss";
 
-import {Attraction,RouteInfo,Statistic,VisitedPlace,SearchPoint,Event,
-  PopularRoute,MapContextMenuProps,Props,mapRef, markers,
-setMarkers, searchMarkersRef, attractionMarkersRef, attractions,
-  routeInfo, setRouteInfo, currentLocation,setCurrentLocation, transportMode, setTransportMode,
-isLoading, setIsLoading, routeLayerRef, currentLocationMarkerRef, routeControl, setRouteControl,
-userLocation, setUserLocation, useCurrentLocation,setUseCurrentLocation,toRad,calculateDistance ,
-  calculateTime,reverseGeocode,getCurrentLocation,searchAddress,createAttractionMarkers,getIconForType,
-  resetRoute,translateInstruction,createRoute,clearRoute,getRouteCoordinates,handleLastVisitedClick} from "./constans"
+import {
+  Attraction,
+  RouteInfo,
+  Statistic,
+  VisitedPlace,
+  SearchPoint,
+  Event,
+  PopularRoute,
+  MapContextMenuProps,
+  Props,
+  mapRef,
+  markers,
+  setMarkers,
+  searchMarkersRef,
+  attractionMarkersRef,
+  routeInfo,
+  setRouteInfo,
+  currentLocation,
+  setCurrentLocation,
+  transportMode,
+  setTransportMode,
+  isLoading,
+  setIsLoading,
+  routeLayerRef,
+  currentLocationMarkerRef,
+  routeControl,
+  setRouteControl,
+  userLocation,
+  setUserLocation,
+  useCurrentLocation,
+  setUseCurrentLocation,
+  calculateDistance,
+  calculateTime,
+  reverseGeocode,
+  getCurrentLocation,
+  searchAddress,
+  createAttractionMarkers,
+  getIconForType,
+  resetRoute,
+  translateInstruction,
+  createRoute,
+  clearRoute,
+  getRouteCoordinates,
+  handleLastVisitedClick,
+} from "./constans";
 
-import {ATTRACTIONS, lastVisited,statistics,popularRoutes,upcomingEvents,
-routePoints,setRoutePoints} from "./Map-test-events"
-
-import {MapContextMenu} from "./MapContextMenu"
-
-import  "./Map-help-func"
+import {
+  lastVisited,
+  statistics,
+  popularRoutes,
+  upcomingEvents,
+  routePoints,
+  setRoutePoints,
+  initialRoutePoints,
+  attractions as ATTRACTIONS,
+} from "./Map-test-events";
 
 
 
@@ -236,6 +276,12 @@ const Map: React.FC<Props> = ({ apiKey }) => {
     }
   };
 
+  const handleReset = () => {
+    resetRoute();
+    setRoutePoints(initialRoutePoints);
+    setRouteInfo(null);
+  };
+
   useEffect(() => {
     if (!mapRef.current) {
       const map = L.map('map', {
@@ -260,8 +306,10 @@ const Map: React.FC<Props> = ({ apiKey }) => {
       setIsLoading(false);
 
       getCurrentLocation();
+      createAttractionMarkers();
     }
   }, [handleMapClick, getCurrentLocation])
+  
 
   return (
       <div className="map3d-page">
@@ -345,11 +393,9 @@ const Map: React.FC<Props> = ({ apiKey }) => {
                 <span className="material-symbols-rounded">directions</span>
                 Построить маршрут
               </button>
-              <button
-                  className="reset-route-btn"
-                  onClick={resetRoute}
-                  disabled={!markers.A && !markers.B && !routeInfo}
-              >
+              <button className="reset-route-btn"
+                      onClick={handleReset}
+                      disabled={!markers.A && !markers.B && !routeInfo}>
                 <span className="material-symbols-rounded">restart_alt</span>
                 Сбросить
               </button>
