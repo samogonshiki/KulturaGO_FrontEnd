@@ -1,58 +1,59 @@
-import {useEffect} from "react";
+import { useEffect, useRef } from "react";
+import L from "leaflet";
 import {
     createAttractionMarkers,
     getCurrentLocation,
     mapRef,
     markers,
+    useCurrentLocation,
     searchMarkersRef,
-    setIsLoading,
-    useCurrentLocation
 } from "./constans";
-import L from "leaflet";
 
-useEffect(() => {
-    if (mapRef.current) {
-        searchMarkersRef.current.forEach(marker => {
-            if (mapRef.current) {
-                mapRef.current.removeLayer(marker);
-            }
-        });
-        searchMarkersRef.current = [];
+export function useMapHelpers() {
+    const localRef = useRef<L.Marker[]>([]);
+
+    useEffect(() => {
+        if (!mapRef.current) return;
+
+        localRef.current.forEach(m => mapRef.current!.removeLayer(m));
+        localRef.current = [];
 
         if (markers.A) {
-            const markerA = L.marker([markers.A.lat, markers.A.lng], {
+            const mA = L.marker([markers.A.lat, markers.A.lng], {
                 icon: L.divIcon({
-                    className: 'custom-marker marker-a',
+                    className: "custom-marker marker-a",
                     html: `<div class="marker-inner" data-label="Откуда">
-                    <span class="material-symbols-rounded">person_pin_circle</span>
-                  </div>`
+                   <span class="material-symbols-rounded">person_pin_circle</span>
+                 </div>`
                 })
             }).addTo(mapRef.current);
-            searchMarkersRef.current[0] = markerA;
+            mA.setZIndexOffset(10_000);
+            localRef.current.push(mA);
         }
 
         if (markers.B) {
-            const markerB = L.marker([markers.B.lat, markers.B.lng], {
+            const mB = L.marker([markers.B.lat, markers.B.lng], {
                 icon: L.divIcon({
-                    className: 'custom-marker marker-b',
+                    className: "custom-marker marker-b",
                     html: `<div class="marker-inner" data-label="Куда">
-                    <span class="material-symbols-rounded">place</span>
-                  </div>`
+                   <span class="material-symbols-rounded">place</span>
+                 </div>`
                 })
             }).addTo(mapRef.current);
-            searchMarkersRef.current[1] = markerB;
+            mB.setZIndexOffset(10_000);
+            localRef.current.push(mB);
         }
-    }
-}, [markers]);
 
-useEffect(() => {
-    if (mapRef.current) {
-        createAttractionMarkers();
-    }
-}, [createAttractionMarkers, mapRef.current]);
+        searchMarkersRef.current = localRef.current;
+    }, [markers.A?.lat, markers.A?.lng, markers.B?.lat, markers.B?.lng]);
 
-useEffect(() => {
-    if (useCurrentLocation) {
-        getCurrentLocation();
-    }
-}, [useCurrentLocation, getCurrentLocation]);
+    useEffect(() => {
+        if (mapRef.current) createAttractionMarkers();
+    }, []);
+
+    useEffect(() => {
+        if (useCurrentLocation) getCurrentLocation();
+    }, [useCurrentLocation]);
+
+    return null;
+}
