@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { profileApi, Profile } from '../api/api';
+import { profileApi} from '../api/api';
+import { Profile} from '../api/interface-api';
 
 export function useProfile() {
     const [profile, setProfile]   = useState<Profile | null>(null);

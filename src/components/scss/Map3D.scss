@@ -2145,3 +2145,25 @@ body {
     }
   }
 }
+
+.attraction-marker .material-symbols-rounded {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.attraction-cluster {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #6c5dd3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px #0006;
+}
+.attraction-cluster .cluster-inner {
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+}

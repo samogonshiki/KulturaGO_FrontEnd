@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { securityApi, SecurityItem } from "../api/api";
+import { securityApi} from "../api/api";
+import {SecurityItem} from "../api/interface-api"
 import { toast } from "react-toastify";
 
 export function useSecurity() {

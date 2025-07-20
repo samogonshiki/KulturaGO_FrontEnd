@@ -9,6 +9,10 @@ declare module 'leaflet' {
     lng: number;
   }
 
+  interface Marker {
+    setZIndexOffset(offset: number): this;
+  }
+
   export class Map {
     constructor(element: string | HTMLElement, options?: MapOptions);
     setView(center: [number, number], zoom: number): this;
